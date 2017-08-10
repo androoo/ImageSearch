@@ -17,6 +17,8 @@
 		5A2BBF231F3D0EC9001431F8 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2BBF221F3D0EC9001431F8 /* ImageController.swift */; };
 		5A2BBF261F3D16A3001431F8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2BBF251F3D16A3001431F8 /* SearchViewController.swift */; };
 		5A2BBF281F3D17A2001431F8 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2BBF271F3D17A2001431F8 /* ImageCollectionViewCell.swift */; };
+		5A2BBF2C1F3D18CD001431F8 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2BBF2B1F3D18CD001431F8 /* CustomSearchController.swift */; };
+		5A2BBF2E1F3D1930001431F8 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2BBF2D1F3D1930001431F8 /* CustomSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		5A2BBF221F3D0EC9001431F8 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		5A2BBF251F3D16A3001431F8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5A2BBF271F3D17A2001431F8 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		5A2BBF2B1F3D18CD001431F8 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		5A2BBF2D1F3D1930001431F8 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 				5A2BBF211F3D0EB9001431F8 /* ModelController */,
 				5A2BBF241F3D1673001431F8 /* ViewController */,
 				5A2BBF291F3D17B2001431F8 /* Views */,
+				5A2BBF2A1F3D1898001431F8 /* CustomSearch */,
 				5A2BBF151F3D0A9E001431F8 /* Storyboards */,
 				5A2BBF161F3D0AA5001431F8 /* Sources */,
 				5A2BBF1B1F3D0BF5001431F8 /* Helpers */,
@@ -151,6 +156,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		5A2BBF2A1F3D1898001431F8 /* CustomSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5A2BBF2B1F3D18CD001431F8 /* CustomSearchController.swift */,
+				5A2BBF2D1F3D1930001431F8 /* CustomSearchBar.swift */,
+			);
+			name = CustomSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,6 +242,8 @@
 				5A2BBF231F3D0EC9001431F8 /* ImageController.swift in Sources */,
 				5A2BBF201F3D0E40001431F8 /* NetworkController.swift in Sources */,
 				5A2BBF281F3D17A2001431F8 /* ImageCollectionViewCell.swift in Sources */,
+				5A2BBF2C1F3D18CD001431F8 /* CustomSearchController.swift in Sources */,
+				5A2BBF2E1F3D1930001431F8 /* CustomSearchBar.swift in Sources */,
 				5A2BBF041F3D0A24001431F8 /* AppDelegate.swift in Sources */,
 				5A2BBF1D1F3D0C01001431F8 /* Keys.swift in Sources */,
 				5A2BBF1A1F3D0B58001431F8 /* Image.swift in Sources */,
