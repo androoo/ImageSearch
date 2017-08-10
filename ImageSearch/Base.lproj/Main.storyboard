@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="6Cw-Vo-eLU">
             <objects>
-                <viewController id="Z9K-I3-6x8" sceneMemberID="viewController">
+                <viewController id="Z9K-I3-6x8" customClass="SearchViewController" customModule="ImageSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UFq-4u-wLe"/>
                         <viewControllerLayoutGuide type="bottom" id="ebM-Dg-yzF"/>
@@ -31,7 +31,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resultCell" id="neq-yn-OL0">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resultCell" id="neq-yn-OL0" customClass="ImageCollectionViewCell" customModule="ImageSearch" customModuleProvider="target">
                                         <rect key="frame" x="70.5" y="0.0" width="234" height="262"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -59,6 +59,8 @@
                                             <constraint firstItem="lAP-RT-uDb" firstAttribute="top" secondItem="neq-yn-OL0" secondAttribute="top" id="qUN-kb-mnl"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cellImageView" destination="lAP-RT-uDb" id="bZz-Ho-ZoA"/>
+                                            <outlet property="imageDescriptionLabel" destination="1yX-i0-fa0" id="LIG-4H-b0g"/>
                                             <segue destination="Mrz-YB-Kmt" kind="show" identifier="toImageDetail" id="901-yz-QBm"/>
                                         </connections>
                                     </collectionViewCell>
@@ -74,6 +76,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dNm-x0-Gpq"/>
+                    <connections>
+                        <outlet property="collectionView" destination="FkO-GR-34v" id="2re-LP-b1W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDi-mT-3NB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
