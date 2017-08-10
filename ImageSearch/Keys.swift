@@ -25,6 +25,14 @@ struct Keys {
     static let userInfoKey = "user"
     static let usernameKey = "username"
     
+    //MARK: - Storyboard Keys 
+    
+    static let colletionViewResultCell = "resultCell"
+    static let toImageDetailSegue = "toImageDetail"
+    static let heroTableViewCell = "heroCell"
+    static let descriptionTableViewCell = "descriptionCell"
+    static let footerTableViewCell = "footerCell"
+    
 }
 
 typealias JSONDictionary = [String: Any]
