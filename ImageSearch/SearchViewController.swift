@@ -29,6 +29,10 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     
+    var page: Int = 1
+    var searchTerm: String?
+    var shouldShowSearchResult = false 
+    
     
     //MARK: - View lifecycle 
     
@@ -60,6 +64,8 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Keys.colletionViewResultCell, for: indexPath) as? ImageCollectionViewCell else { return ImageCollectionViewCell() }
         
+        let image = images[indexPath.row]
+        
         return cell
         
     }
@@ -83,7 +89,13 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func didTapOnSearchButton() {
-        
+        guard let keyword = self.searchTerm else { return }
+        images = []
+        fetch(imagesWithkeyword: keyword)
+        if !shouldShowSearchResult {
+            shouldShowSearchResult = true
+            collectionView.reloadData()
+        }
     }
     
     func didTapOnCancelButton() {
@@ -91,8 +103,28 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func didChangeSearchText(searchText: String) {
-        
+        self.searchTerm = searchText
     }
+    
+    
+    //MARK: - API Methods 
+    
+    func fetch(imagesWithkeyword keyword: String) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        ImageContoller.fetchImages(withApiKey: Keys.apiKey, andSearchTerm: keyword, forPage: self.page) { (images) in
+            DispatchQueue.main.async {
+                
+                self.images = images
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.collectionView.reloadData()
+                
+            }
+            self.page += 1
+        }
+    }
+    
 }
 
 
