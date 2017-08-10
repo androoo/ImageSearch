@@ -32,7 +32,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     var page: Int = 1
     var searchTerm: String?
     var shouldShowSearchResult = false 
-    
+    var isLoading = false
     
     //MARK: - View lifecycle 
     
@@ -123,6 +123,31 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
             }
             self.page += 1
+        }
+    }
+    
+    
+    //MARK: - Infinite Scroll 
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let searchTerm = searchTerm else { return }
+        
+        if indexPath.row == self.images.count - 1 && !isLoading {
+            
+            self.isLoading = true
+            
+            ImageContoller.fetchImages(withApiKey: Keys.apiKey, andSearchTerm: searchTerm, forPage: page, completion: { (images) in
+                
+                self.page += 1
+                self.isLoading = false
+                self.images.append(contentsOf: images)
+                
+                DispatchQueue.main.async {
+                    
+                    self.collectionView.reloadData()
+                }
+            })
         }
     }
     
