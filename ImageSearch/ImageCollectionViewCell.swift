@@ -10,10 +10,28 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - Properties 
+    
+    var image: Image? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     //MARK: - Outlets 
     
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var imageDescriptionLabel: UILabel!
     
+    override func prepareForReuse() {
+        
+    }
+    
+    func updateViews() {
+        cellImageView.image = image?.image
+        imageDescriptionLabel.text = image?.description
+        cellImageView.layer.cornerRadius = 4
+        cellImageView.layer.masksToBounds = true 
+    }
     
 }

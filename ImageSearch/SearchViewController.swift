@@ -65,6 +65,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Keys.colletionViewResultCell, for: indexPath) as? ImageCollectionViewCell else { return ImageCollectionViewCell() }
         
         let image = images[indexPath.row]
+        cell.image = image 
         
         return cell
         
