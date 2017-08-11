@@ -56,8 +56,8 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
     }
     
     
@@ -111,7 +111,7 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0: return self.view.layer.frame.width
-        case 1: return 250
+        case 1: return 235
         case 2: return 76
         default: return 200
         }
