@@ -23,8 +23,8 @@ class DescriptionTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let item = item else { return }
-        
         descriptionLabel.text = item.description
+        descriptionLabel.textColor = UIColor.appDarkGrey
         
     }
     

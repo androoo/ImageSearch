@@ -34,6 +34,9 @@ class FooterTableViewCell: UITableViewCell {
         usernameLabel.text = item.username
         clockLabel.text = item.date
         cameraLabel.text = item.camera
+        usernameLabel.textColor = UIColor.appLightGrey
+        clockLabel.textColor = UIColor.appLightGrey
+        cameraLabel.textColor = UIColor.appLightGrey
     }
 
 }

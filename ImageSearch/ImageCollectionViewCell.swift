@@ -31,7 +31,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         cellImageView.image = image?.image
         imageDescriptionLabel.text = image?.description
         cellImageView.layer.cornerRadius = 4
-        cellImageView.layer.masksToBounds = true 
+        cellImageView.layer.masksToBounds = true
+        imageDescriptionLabel.textColor = .appDarkGrey
     }
     
 }
