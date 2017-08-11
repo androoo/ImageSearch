@@ -44,32 +44,35 @@ class ImageContoller {
             
             var images = [Image]()
             
+            let group = DispatchGroup()
             
             // Set Image Object's UIImage
             
             for imageDictionary in results {
                 
+                group.enter()
                 let newImage = Image(dictionary: imageDictionary)
                 
                 if let newImage = newImage {
                     
-                    DispatchQueue.main.async {
-                        
                         ImageContoller.getImage(atURL: newImage.imagePath, completion: { (image) in
                             
                             DispatchQueue.main.async {
                                 newImage.image = image
+                                group.leave()
                             }
                         })
-                    }
                     images.append(newImage)
+                } else {
+                    group.leave()
                 }
+                
             }
             
-            DispatchQueue.main.async {
+            group.notify(queue: DispatchQueue.main, execute: {
                 
                 completion(images)
-            }
+            })
             
         }
     }

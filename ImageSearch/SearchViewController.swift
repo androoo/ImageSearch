@@ -70,7 +70,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         let image = images[indexPath.row]
         cell.image = image 
         cell.layoutIfNeeded()
-        
+        cell.setNeedsLayout()
         return cell
         
     }
