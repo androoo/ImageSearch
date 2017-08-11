@@ -34,12 +34,15 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     var shouldShowSearchResult = false 
     var isLoading = false
     
+    
     //MARK: - View lifecycle 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureCustomSearchController()
+        
+        // CollectionView Flow layout stuff 
         
         screenSize = UIScreen.main.bounds
         screenWidth = screenSize.width
@@ -111,7 +114,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func didTapOnCancelButton() {
-        
+        // clear text on cancel
     }
     
     func didChangeSearchText(searchText: String) {
@@ -142,11 +145,17 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
+        // Make sure we have a searchTerm 
+        
         guard let searchTerm = searchTerm else { return }
+        
+        // Check to see if we're at the end of our available items and aren't already loading 
         
         if indexPath.row == self.images.count - 1 && !isLoading {
             
             self.isLoading = true
+            
+            // fetch next page of items and iterate page property 
             
             ImageContoller.fetchImages(withApiKey: Keys.apiKey, andSearchTerm: searchTerm, forPage: page, completion: { (images) in
                 

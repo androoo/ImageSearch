@@ -12,6 +12,8 @@ class ImageContoller {
 
     static func fetchImages(withApiKey apiKey: String, andSearchTerm searchTerm: String, forPage page: Int, completion: @escaping (_ images: [Image]) -> Void) {
         
+        // Make sure we have a url and set up parameters for endpoint 
+        
         guard let url = Keys.baseURL else { completion([]); return }
         let urlParameters = ["page": "\(page)", "consumer_key": "\(Keys.apiKey)", "term": "\(searchTerm)"]
         
@@ -21,20 +23,29 @@ class ImageContoller {
                 NSLog(error.localizedDescription)
             }
             
+            // Convert returned data into string
+            
             guard let data = data,
                 let stringFromData = String(data: data, encoding: .utf8) else {
                     NSLog("Could not get any data")
                     completion([]); return
             }
             
+            // Serialize JSON into dictionary
+            
             guard let dictionaryFromString = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? JSONDictionary else {
                 NSLog("Could not serialse \(stringFromData)")
                 completion([]); return
             }
             
+            // Convert into results dictionary 
+            
             guard let results = dictionaryFromString["photos"] as? [JSONDictionary] else { print("Couldn't get results."); completion([]); return }
             
             var images = [Image]()
+            
+            
+            // Set Image Object's UIImage
             
             for imageDictionary in results {
                 

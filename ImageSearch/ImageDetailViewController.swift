@@ -20,6 +20,8 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    // set hero cell for stretchy header 
+    
     var heroCell: HeroTableViewCell?
     
     //MARK: - Outlets 
@@ -42,7 +44,6 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func viewDidLayoutSubviews() {
-        
         updateViews()
     }
     
@@ -51,10 +52,10 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func updateViews() {
         
+        // clear navbar and custom back arrow
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
     }
