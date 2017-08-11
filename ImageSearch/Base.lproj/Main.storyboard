@@ -40,10 +40,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lAP-RT-uDb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="176" height="225"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="176" height="163"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yX-i0-fa0">
-                                                    <rect key="frame" x="8" y="233" width="160" height="21"/>
+                                                    <rect key="frame" x="8" y="171" width="160" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -98,11 +98,11 @@
                         <viewControllerLayoutGuide type="bottom" id="fFJ-Ts-FMU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MS4-Ei-mpc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="346" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ilf-2h-vuN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="heroCell" rowHeight="375" id="huP-Qm-GQE" customClass="HeroTableViewCell" customModule="ImageSearch" customModuleProvider="target">
@@ -265,8 +265,6 @@
                             <constraint firstAttribute="trailing" secondItem="ilf-2h-vuN" secondAttribute="trailing" id="TXL-5u-kSE"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="tableView" destination="ilf-2h-vuN" id="Su3-pz-utb"/>
                     </connections>
@@ -280,9 +278,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eEF-6J-hPr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1WU-bL-R5D">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1WU-bL-R5D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

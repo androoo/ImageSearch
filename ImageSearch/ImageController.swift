@@ -54,7 +54,12 @@ class ImageContoller {
                     images.append(newImage)
                 }
             }
-            completion(images)
+            
+            DispatchQueue.main.async {
+                
+                completion(images)
+            }
+            
         }
     }
     
@@ -76,7 +81,10 @@ class ImageContoller {
                     completion(nil)
                     return
             }
-            completion(image)
+            DispatchQueue.main.async {
+                
+                completion(image)
+            }
         }
     }
 }

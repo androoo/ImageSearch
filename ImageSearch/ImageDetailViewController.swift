@@ -31,13 +31,19 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        updateViews()
+        updateViews()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        updateViews()
+        self.tableView.contentInset = UIEdgeInsets(top: -64, left: 0, bottom: 0, right: 0)
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        updateViews()
     }
     
     
@@ -45,7 +51,12 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func updateViews() {
         
-           
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
     }
     
     

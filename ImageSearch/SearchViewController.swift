@@ -50,7 +50,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         flowLayout.minimumInteritemSpacing = 16
         flowLayout.minimumLineSpacing = 36
         collectionView!.collectionViewLayout = flowLayout
-        
+        collectionView.reloadData()
     }
     
     
@@ -66,6 +66,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let image = images[indexPath.row]
         cell.image = image 
+        cell.layoutIfNeeded()
         
         return cell
         
@@ -75,7 +76,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func configureCustomSearchController() {
         
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: Double(self.view.frame.width), height: 75.0), searchBarFont: UIFont(name: "Helvetica", size: 18.0)!, searchBarTextColor: UIColor.blue, searchBarTintColor: .purple)
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: Double(self.view.frame.width), height: 75.0), searchBarFont: UIFont(name: "Helvetica", size: 18.0)!, searchBarTextColor: UIColor.appDarkGrey, searchBarTintColor: .purple)
         
         customSearchController.customSearchBar.placeholder = "Search for images...                          "
         customSearchController.customSearchDelegate = self
@@ -92,11 +93,21 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     func didTapOnSearchButton() {
         guard let keyword = self.searchTerm else { return }
         images = []
-        fetch(imagesWithkeyword: keyword)
-        if !shouldShowSearchResult {
-            shouldShowSearchResult = true
-            collectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            
+            self.fetch(imagesWithkeyword: keyword)
+            if !self.shouldShowSearchResult {
+                self.shouldShowSearchResult = true
+                
+                DispatchQueue.main.async {
+                    
+                    self.collectionView.reloadData()
+                }
+                
+            }
         }
+        
     }
     
     func didTapOnCancelButton() {
@@ -116,14 +127,14 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         ImageContoller.fetchImages(withApiKey: Keys.apiKey, andSearchTerm: keyword, forPage: self.page) { (images) in
             DispatchQueue.main.async {
-                
                 self.images = images
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 self.collectionView.reloadData()
-                
             }
             self.page += 1
         }
+        collectionView.reloadData()
+        
     }
     
     
@@ -155,6 +166,10 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Keys.toImageDetailSegue {
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
             
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first,
                 let destinationVC = segue.destination as? ImageDetailViewController else { return }

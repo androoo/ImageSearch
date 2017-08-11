@@ -14,7 +14,9 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     var image: Image? {
         didSet {
-            updateViews()
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
         }
     }
     
@@ -22,10 +24,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var imageDescriptionLabel: UILabel!
-    
-    override func prepareForReuse() {
-        
-    }
+
     
     func updateViews() {
         cellImageView.image = image?.image
