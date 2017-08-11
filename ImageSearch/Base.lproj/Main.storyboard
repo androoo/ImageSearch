@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="1423.2" y="-125.4872563718141"/>
         </scene>
-        <!--View Controller-->
+        <!--Image Detail View Controller-->
         <scene sceneID="pav-Iz-Oay">
             <objects>
-                <viewController id="Mrz-YB-Kmt" sceneMemberID="viewController">
+                <viewController id="Mrz-YB-Kmt" customClass="ImageDetailViewController" customModule="ImageSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ibB-A9-uwc"/>
                         <viewControllerLayoutGuide type="bottom" id="fFJ-Ts-FMU"/>
@@ -104,14 +104,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="heroCell" rowHeight="375" id="huP-Qm-GQE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="heroCell" rowHeight="375" id="huP-Qm-GQE" customClass="HeroTableViewCell" customModule="ImageSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="375"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="huP-Qm-GQE" id="iLF-Tz-lJ7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z1e-Pr-eUe">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z1e-Pr-eUe">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
                                                 </imageView>
                                             </subviews>
@@ -122,8 +122,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="Z1e-Pr-eUe" secondAttribute="bottom" id="pH6-Ji-IQr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="heroImage" destination="Z1e-Pr-eUe" id="BEl-5n-oQw"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="150" id="mNX-yu-fhh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="150" id="mNX-yu-fhh" customClass="DescriptionTableViewCell" customModule="ImageSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="403" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mNX-yu-fhh" id="5AH-vF-SFe">
@@ -144,8 +147,11 @@
                                                 <constraint firstItem="UZs-VX-9bx" firstAttribute="centerY" secondItem="5AH-vF-SFe" secondAttribute="centerY" id="WRY-ug-aG7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="UZs-VX-9bx" id="Ysr-MV-iHs"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="76" id="8fu-Mr-n4D">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="76" id="8fu-Mr-n4D" customClass="FooterTableViewCell" customModule="ImageSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="553" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8fu-Mr-n4D" id="JSk-LV-LC7">
@@ -230,8 +236,20 @@
                                                 <constraint firstItem="ZHH-cq-IIl" firstAttribute="leading" secondItem="JSk-LV-LC7" secondAttribute="leading" constant="8" id="IHa-lB-LkV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cameraIcon" destination="32J-ai-MDz" id="zpj-1I-UKk"/>
+                                            <outlet property="cameraLabel" destination="zfe-yS-eym" id="8LM-Q6-s3Z"/>
+                                            <outlet property="clockIcon" destination="a37-Xp-bN3" id="VIE-8E-85K"/>
+                                            <outlet property="clockLabel" destination="cHg-fc-f2v" id="OhH-bE-T0K"/>
+                                            <outlet property="usernameIcon" destination="n0j-eQ-XPi" id="nZ3-lf-V5E"/>
+                                            <outlet property="usernameLabel" destination="S1E-sd-Sld" id="37R-q1-4pv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mrz-YB-Kmt" id="W5f-Bk-hIR"/>
+                                    <outlet property="delegate" destination="Mrz-YB-Kmt" id="xvB-FQ-aOq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,6 +262,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="tableView" destination="ilf-2h-vuN" id="Su3-pz-utb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PnH-5u-toe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

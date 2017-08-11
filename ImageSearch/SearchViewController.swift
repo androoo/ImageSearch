@@ -151,6 +151,20 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    //MARK: - Navigation 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Keys.toImageDetailSegue {
+            
+            guard let indexPath = collectionView.indexPathsForSelectedItems?.first,
+                let destinationVC = segue.destination as? ImageDetailViewController else { return }
+            
+            let image = self.images[indexPath.row]
+            destinationVC.image = image
+            
+        }
+    }
+    
 }
 
 
