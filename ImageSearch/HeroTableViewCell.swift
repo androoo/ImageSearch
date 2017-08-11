@@ -18,6 +18,8 @@ class HeroTableViewCell: UITableViewCell {
         }
     }
     
+    
+    @IBOutlet weak var heroImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var heroImage: UIImageView!
     
     func updateViews() {

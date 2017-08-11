@@ -17,5 +17,23 @@ class FooterTableViewCell: UITableViewCell {
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var cameraLabel: UILabel!
     
+    
+    //MARK: - Properties
+    
+    var item: Image? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    //MARK: - Methods 
+    
+    func updateViews() {
+        guard let item = item else { return }
+        
+        usernameLabel.text = item.username
+        clockLabel.text = item.date
+        cameraLabel.text = item.camera
+    }
 
 }

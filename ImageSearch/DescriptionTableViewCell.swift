@@ -10,7 +10,23 @@ import UIKit
 
 class DescriptionTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    
+    var item: Image? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    func updateViews() {
+        
+        guard let item = item else { return }
+        
+        descriptionLabel.text = item.description
+        
+    }
     
 
 }

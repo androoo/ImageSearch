@@ -20,6 +20,8 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    var heroCell: HeroTableViewCell?
+    
     //MARK: - Outlets 
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,9 +29,14 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: - View Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        updateViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        updateViews()
         
     }
     
@@ -38,8 +45,7 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func updateViews() {
         
-        
-        
+           
     }
     
     
@@ -61,16 +67,24 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Keys.heroTableViewCell, for: indexPath) as? HeroTableViewCell else { return HeroTableViewCell() }
             
             cell.item = self.image
+            heroCell = cell
+            cell.separatorInset.left = 900
             
             return cell
             
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Keys.descriptionTableViewCell, for: indexPath) as? DescriptionTableViewCell else { return DescriptionTableViewCell() }
             
+            cell.item = self.image
+            cell.separatorInset.left = 900
+            
             return cell
             
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Keys.footerTableViewCell, for: indexPath) as? FooterTableViewCell else { return FooterTableViewCell() }
+            
+            cell.item = self.image
+            cell.separatorInset.left = 900
             
             return cell
             
@@ -93,6 +107,18 @@ class ImageDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 375
+    }
+    
+    //MARK: - Tableview Scroll 
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if let cell = heroCell {
+            if scrollView.contentOffset.y < 0 {
+                cell.heroImageTopConstraint.constant = scrollView.contentOffset.y
+            }
+        }
+        
     }
     
     
